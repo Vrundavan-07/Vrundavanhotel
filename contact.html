@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Hotel Vrundavan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f9f7f7, #e0dede);
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #4a2c2a;
+    }
+
+    .info, .form, .social {
+      margin-top: 30px;
+    }
+
+    .info p, .info a {
+      font-size: 16px;
+      color: #333;
+      margin: 8px 0;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #4a2c2a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5c3936;
+    }
+
+    .social a {
+      display: inline-block;
+      margin: 10px 15px 0 0;
+      text-decoration: none;
+      font-size: 18px;
+      color: #4a2c2a;
+    }
+
+    .social a:hover {
+      color: #f44336;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      .social a {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Contact Hotel Vrundavan</h2>
+
+    <div class="info">
+      <p><strong>📍 Address:</strong> Infront of GK Arise, Gaikwad Nagar, Punawale, Pune - 411033</p>
+      <p><strong>📞 Phone:</strong> +91-96896 23838 / +91-70666 43944</p>
+      <p><strong>🏨 Hotel Name:</strong> Hotel Vrundavan</p>
+    </div>
+
+    <div class="social">
+      <p><strong>🌐 Follow us:</strong></p>
+      <a href="https://www.instagram.com/hotelvrundavan" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/hotelvrundavan" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/hotelvrundavan" target="_blank">YouTube</a>
+    </div>
+
+    <div class="form">
+      <form onsubmit="return sendEmail()">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function sendEmail() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      const subject = encodeURIComponent("New Contact Form Message");
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+      window.location.href = `mailto:hotelvrundavan@gmail.com?subject=${subject}&body=${body}`;
+      return false;
+    }
+  </script>
+
+</body>
+</html>

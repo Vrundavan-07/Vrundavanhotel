@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Homepage</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('background.jpg'); /* <-- your image file */
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      filter: blur(5px);
+      z-index: -1;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      z-index: 1000;
+      transition: max-height 0.3s ease;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      padding: 10px 20px;
+      font-size: 25px;
+      border: 1px solid white;
+      border-radius: 25px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar a:hover {
+      background: white;
+      color: black;
+    }
+
+    .navbar.hide-links {
+      max-height: 0;
+      overflow: hidden;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .navbar.show-links {
+      max-height: 300px;
+      flex-direction: column;
+      padding: 10px 0;
+    }
+
+    .navbar.show-links a {
+      margin: 10px 0;
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      border-radius: 0;
+      border: none;
+      padding: 15px 0;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: fixed;
+      right: 20px;
+      top: 15px;
+      z-index: 1100;
+    }
+
+    .menu-toggle div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .menu-toggle.active div:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    h3 {
+      font-size: 48px;
+      margin: 10px 0;
+      text-shadow: 2px 2px 6px #000;
+    }
+
+    h1 {
+      font-size: 105px;
+      margin: 10px 0;
+      color: #ffb7c3;
+      background: #141010;
+      padding: 20px 55px;
+      border-radius: 30px;
+      text-shadow: 2px 2px 4px #000;
+      font-family: Arial, sans-serif;
+      user-select: none;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 17px;
+      background: white;
+      color: black;
+      cursor: pointer;
+      transition: background 0.3s;
+      box-shadow: 0 5px 10px rgba(255, 183, 195, 0.7);
+    }
+
+    button:hover {
+      background: #ddd;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .navbar {
+        justify-content: flex-start;
+        padding-left: 20px;
+      }
+
+      .navbar a {
+        font-size: 20px;
+        margin: 10px 0;
+        border-radius: 0;
+        border: none;
+        padding: 15px 10px;
+        width: 100%;
+        background: transparent;
+      }
+
+      h3 {
+        font-size: 28px;
+      }
+
+      h1 {
+        font-size: 48px;
+        padding: 15px 25px;
+        border-radius: 15px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 12px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" tabindex="0" role="button">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar hide-links" id="navbar" role="navigation" aria-label="Primary Navigation">
+    <a href="/about.html">About Us</a>
+    <a href="/menu.html">Our Menu</a>
+    <a href="/contact.html">Contact Us</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h3>Welcome to</h3>
+    <h1>HOTEL VRUNDAVAN</h1>
+    <a href="/about.html"><button>Know More</button></a>
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navbar = document.getElementById('navbar');
+
+    menuToggle.addEventListener('click', () => {
+      navbar.classList.toggle('show-links');
+      navbar.classList.toggle('hide-links');
+      menuToggle.classList.toggle('active');
+    });
+
+    // Close menu on link click for mobile
+    document.querySelectorAll('.navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navbar.classList.add('hide-links');
+          navbar.classList.remove('show-links');
+          menuToggle.classList.remove('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
